@@ -1,0 +1,44 @@
+<%#= nested_form_for @video ,html: { class: "form-horizontal" ,:multipart => true} do |f|%>
+<div class ="container">
+  
+  <%= form_for @video, :html => { class: "form-horizontal", :multipart => true} do |f| %>
+
+  <div class="form-group ">
+    <label for="inputtitle "class="col-sm-2 control-label" >Title</label>
+    <div class="col-sm-6">
+      <%=  f.text_field :title , class: "form-control" ,id: "inputtitle"%>
+      
+    </div>
+  </div>
+
+  <div class="form-group ">
+    <label for="inputdescription "class="col-sm-2 control-label" >Description</label>
+      <div class="col-sm-6">
+      <%=  f.text_field :description , class: "form-control" ,id: "inputdescription"%>
+      </div>
+  </div>
+
+  <div class="form-group ">
+    <label for="InputFile "class="col-sm-2 control-label" >File input</label>
+     <div class="col-sm-6">
+      <%= f.file_field :video ,class: "form-control" ,id: "InputFile" %>
+     </div>
+  </div>
+  <div class = "form_group ">
+   <label for="Inputvideo " class="col-sm-2 control-label" >Select The Video Type</label>&nbsp;&nbsp;
+   <div class="col-sm-6">
+     <%= f.radio_button :video_type, 'Public', :checked => true %> 
+     <label for="Inputradio" >Public</label>
+     <%= f.radio_button :video_type, 'Private'%> 
+     <label for="Inputradio" >Private</label>
+   </div>
+  </div>
+  <div class="form-group ">
+    <div class="col-sm-offset-2 col-sm-10">
+     
+      <%= f.submit %>
+     </div>
+  </div>   
+
+<%end%>
+</div>

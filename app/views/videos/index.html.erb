@@ -1,0 +1,82 @@
+<div class ="container">
+
+     <div class="btn-group btn-group-sm" >
+        <button type="button" class="btn btn-default"><%= link_to "Upload Video",new_video_path()  %>
+        </button>
+    </div>
+    <%content_for :breadcrumb do %>
+    <ul class="breadcrumb">
+      <li><%= link_to "Home" ,root_path%></li>
+      <li><%= link_to "Video List" %></li>
+    </ul>
+  <%end%>
+
+    <h4>Video</h4>
+   
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Video</th>
+                <th>Video Type</th>
+                <th>Likes</th>
+                <th>Delete</th>
+                
+
+            </tr>
+        </thead>
+        <%# if @tasks.present?%>
+        <% @fetch_videos.each  do |video| %>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <%= video.title%>
+                    </td>
+                    <td> <%= video.description%></td>
+                    <td>
+                        
+                        <%= link_to  video.video , video_path(video)%>
+                    </td>
+                    <td> <%= video.video_type%></td>
+                    <td><%=  video.fetch_like_count%></td>
+                    <td>
+                        <%= link_to "<span class='glyphicon glyphicon-remove btn btn-danger btn-xs'></span>".html_safe , video_path(video),:method => "delete"%> 
+
+                    </td>
+
+                   
+                </tr>
+            </tbody>
+        <% end %>
+       <!--  <% @fetch_videos.each  do |fetch_video| %>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <%= fetch_video.title%>
+                    </td>
+                    <td> <%= fetch_video.description%></td>
+                    <td>
+                        
+                        <%= link_to  fetch_video.video , video_path(fetch_video)%>
+                    </td>
+                    <td> <%= fetch_video.video_type%></td>
+                    <td><%= fetch_video.fetch_like_count%></td>
+                    <td>
+                        <%= link_to "<span class='glyphicon glyphicon-remove btn btn-danger btn-xs'></span>".html_safe , video_path(fetch_video),:method => "delete"%> 
+
+                    </td>
+
+                   
+                </tr>
+            </tbody>
+        <% end %> -->
+    </table>
+  <div class="btn-group btn-group-sm" >
+        <button type="button" class="btn btn-default"><%= link_to "Back" ,root_path %>
+        </button>
+    </div>
+</div>
+    <br />

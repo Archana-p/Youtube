@@ -1,0 +1,31 @@
+<div class ="container">
+<h4>Comment</h4>
+
+
+  <!-- <tr>
+    <td>Title</td>
+     <td> &nbsp;</td>
+  
+   
+    <td>Description</td>
+      <td> &nbsp;</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr> -->
+
+<% @comments.each do |comment| %>
+  <div class="panel panel-default">
+   
+    <div class="panel-body">
+      <%= comment.comment %>
+    </div>  
+  </div>  
+<% end %>
+
+
+
+</div>
+<br />
+
+<%#= link_to 'New Post', new_post_path %>

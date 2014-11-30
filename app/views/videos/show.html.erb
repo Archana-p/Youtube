@@ -1,0 +1,84 @@
+<div class ="container">
+  <%content_for :breadcrumb do %>
+    <ul class="breadcrumb">
+      <li><%= link_to "Home" , root_path%></li>
+      <li><%= link_to "Videos",videos_path(@fetch_video) %></li>
+      <li><%= link_to "#{@video.title}" %></li>
+    </ul>
+  <%end%>
+  <div class = "Row">
+    <div class="col-md-8">
+  	     <%= @video.title%>
+        <script src="http://jwpsrv.com/library/JTsFTGl3EeSnPgoORWfmyA.js"></script>
+
+      <div id='myElement'>Loading the player ...</div>
+      <script type='text/javascript'>
+        jwplayer('myElement').setup({ 
+          file: '<%= "#{@video.video_url}"%>', 
+          height: 360, 
+        
+          width: 640 ,
+          events: {
+                onPlay: function (state) {
+                //alert ("video start");
+                  $.ajax({
+                      type : "put" ,
+                      url :"/videos/<%=@video.id%>/seen_video",
+                      dataType : "json"
+
+                    }).done(function( response ) {});
+              }    
+                   
+              }
+        
+        });
+      </script>
+      </br>
+      <div class="btn-group btn-group-sm col-sm-8" >
+        <button type="button" class="btn btn-default col-sm-2"><%= link_to edit_like_button,like_video_video_path(@video) ,:method => :put %>
+        </button>&nbsp;&nbsp;
+      </div>
+      <p><%=@count%> views</p>
+
+      <a href="https://www.facebook.com/sharer/sharer.php?u=<%=@video.video_url%>" target="_blank">
+        Share on Facebook
+      </a>
+      <a class="twitter-share-button"
+        href="https://twitter.com/share">
+        Tweet
+      </a>
+      <script type="text/javascript">
+      window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+      </script>
+       <%= form_tag share_video_with_user_video_path(@video), :method => 'post' do %>
+     
+      <%= select_tag :user,
+      options_from_collection_for_select(User.all.where("id <> ?" ,current_user.id), "id", "email"),
+       include_blank: true ,
+       multiple: true,
+       class: 'chosen-select' 
+      %>
+      <%= submit_tag "Share with user",:class => "btn btn-default  submit"%>
+    <%end%>
+      <%= render  partial: 'comments/form' , as: :comment%>
+      <%= render  partial: 'videos/comments' %>
+    </div>
+   <%#binding.pry%>
+    <div class="col-md-3">
+    
+      <div id = "nav" >
+       
+         <div id = "nav" >
+        <%@fetch_videos.each do |fetch_video|%>
+         <ul>
+          <%#= image_tag "#{fetch_video.image}" , size:"100x100" , :class => "style_image"%>
+         <%= link_to  "<span class='glyphicon glyphicon-play-circle' aria-hidden='true'>#{fetch_video.title}</span>#{image_tag "#{fetch_video.image}", size:'100x100' , :class => "style_image"}".html_safe  , video_path(fetch_video)%>
+       </ul>
+        <%end%>
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+
