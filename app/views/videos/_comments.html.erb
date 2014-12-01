@@ -9,6 +9,8 @@
    	<div class= "panel panel-default"> 
    
      <div class="panel-body">
+
+     	
       <%= comment.comment %>
       <%= link_to "Delete", video_comment_path(@video.id , comment.id), :method => "delete" unless comment.new_record?%> 
      </div> 
