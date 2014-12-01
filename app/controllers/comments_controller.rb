@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 	end
 	def create
 		@video = Video.find(params[:video_id])
-   @comment = @video.comments.new(comment_params)
+   @comment = @video.comments.new(comment_params)#create a new comment for current video
 	 
 	   if @comment.save 
 	   	
@@ -21,8 +21,6 @@ class CommentsController < ApplicationController
    	@comment.destroy
    	redirect_to article_path(@video)
 	end 
-
-
 	private
 	def comment_params
     params.require(:comment).permit(:comment,:video_id , :user_id)
