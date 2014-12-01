@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20141119164834) do
   create_table "user_videos", force: true do |t|
     t.integer  "user_id"
     t.integer  "video_id"
+
     t.datetime "created_at"
     t.datetime "updated_at"
   end
