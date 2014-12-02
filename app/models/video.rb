@@ -58,8 +58,7 @@ class Video < ActiveRecord::Base
   def fetch_like_count
   	self.analytics.where(like: true).count
   end
-
-
+  
 	def save_video_screenshot
 	
   	convert_to_jpg()
