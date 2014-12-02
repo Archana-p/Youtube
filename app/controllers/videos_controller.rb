@@ -42,6 +42,7 @@ class VideosController < ApplicationController
     #binding.pry
     #test commit
     #test commit
+    
   end
 
   
