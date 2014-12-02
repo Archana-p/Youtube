@@ -1,21 +1,17 @@
 	
 <div class = "container">
-
-  
-   
    	<% @comments.each_with_index do |comment, index| %>
-
-    
+ 
    	<div class= "panel panel-default"> 
    
      <div class="panel-body">
-
-     	
       <%= comment.comment %>
       <%= link_to "Delete", video_comment_path(@video.id , comment.id), :method => "delete" unless comment.new_record?%> 
      </div> 
-    
+    <div class = "panel footer">
+    </div>
     </div/>
  
     <% end %>
-</div>  
+</div> 
+</br> 
