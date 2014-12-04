@@ -1,4 +1,5 @@
 class Video < ActiveRecord::Base
+
 	 mount_uploader :video, VideoUploader
 	 mount_uploader :image , ImageUploader
 	 belongs_to :user
@@ -7,6 +8,7 @@ class Video < ActiveRecord::Base
 	 has_many :user_videos
 	 has_many :users ,:through => :user_videos
 	 validates_presence_of :title , :description 
+
 	 include VideoScreenshot
 	 after_create :save_video_screenshot
 
@@ -38,13 +40,11 @@ class Video < ActiveRecord::Base
 	end
 
 	def self.fetch_videos(current_user , video_type = 'Public')
-	
-	Video.where('video_type = ? AND user_id <> ?', video_type, current_user.id ) + current_user.videos
+	  Video.where('video_type = ? AND user_id <> ?', video_type, current_user.id ) + current_user.videos
 	end
 
   def self.fetch_seen_count(video_id , seen = true)
-    
-  	Analytic.where(video_id: video_id , seen: seen).count
+    Analytic.where(video_id: video_id , seen: seen).count
   end
 
 	def self.fetch_analytic(video_id ,user)
@@ -58,7 +58,7 @@ class Video < ActiveRecord::Base
   def fetch_like_count
   	self.analytics.where(like: true).count
   end
-  
+
 	def save_video_screenshot
 	
   	convert_to_jpg()
