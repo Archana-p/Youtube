@@ -40,7 +40,6 @@ class VideosController < ApplicationController
     @comments = @video.comments
     @comment = @video.comments.new
     #binding.pry
-    #test commit
   end
 
   
