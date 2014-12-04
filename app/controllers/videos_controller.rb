@@ -39,7 +39,6 @@ class VideosController < ApplicationController
     @fetch_videos = Video.fetch_videos(current_user,'public')
     @comments = @video.comments
     @comment = @video.comments.new
-    #binding.pry
   end
 
   
