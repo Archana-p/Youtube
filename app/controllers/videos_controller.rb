@@ -67,7 +67,7 @@ class VideosController < ApplicationController
            format.js{
             render json: { success: true}
            }
-        end 
+    end 
   end
 
   def share_video_with_user
@@ -78,8 +78,8 @@ class VideosController < ApplicationController
       @video.users << user
     end
      redirect_to video_path(@video)
-    
   end
+
 
   private
 	def video_params
