@@ -1,19 +1,18 @@
-<%#= nested_form_for @video ,html: { class: "form-horizontal" ,:multipart => true} do |f|%>
 <div class ="container">
   <%= form_for [@video,@comment],:url => video_comments_path(@video), html: { class: "form-horizontal" } , :method => 'post' do |f| %>
-    <div class= "text-center">
-    <h4> Comment </h4></div>
-     <div class="form-group", "text-right">
-        <label for="inputcomment" class="col-sm-2 control-label">Comment</label>
-        <div class="col-sm-6">
-          <%=  f.text_field :comment , class: "form-control" ,id: "inputcomment"%>
+          <div class= "text-center">
+            <h4> Comment </h4>
+          </div>
+         <div class="form-group", "text-right">
+            <label for="inputcomment" class="col-sm-2 control-label">Comment</label>
+            <div class="col-sm-6">
+              <%=  f.text_field :comment , class: "form-control" ,id: "inputcomment"%>
+            </div>
+          </div>
+        <div class = "form-group","text-right">
+          <div class="col-sm-offset-2 col-sm-10">
+            <%= f.submit "post comment" , class: "btn-btn-default" %>
+          </div>
         </div>
-      </div>
-      <div class = "form-group","text-right">
-    <div class="col-sm-offset-2 col-sm-10">
-          
-          <%= f.submit "post comment" , class: "btn-btn-default" %>
-        </div>
-      </div>
-     <%end %>
+  <%end %>
 </div>
