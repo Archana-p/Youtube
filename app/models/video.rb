@@ -60,8 +60,7 @@ class Video < ActiveRecord::Base
   end
 
 	def save_video_screenshot
-	
-  	convert_to_jpg()
+	 convert_to_jpg()
   end 
 
 end
