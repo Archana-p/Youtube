@@ -1,20 +1,21 @@
 <h1>Welcome!!!!!!</h1>
+  <%if user_signed_in?%>
 
-<%if user_signed_in?%>
-  <%content_for :breadcrumb do %>
-  		 <ul class="breadcrumb">
-  		 <li><%=link_to "Home" , root_path%></li>
-  		 </ul>
+    <%content_for :breadcrumb do %>
+    		 <ul class="breadcrumb">
+    		 <li><%=link_to "Home" , root_path%></li>
+    		 </ul>
+    <%end%>
+
+    <div class="btn-group btn-group-sm" >
+      <button type="button" class="btn btn-default "><%= link_to "My Video",videos_path()  %>
+      </button>
+    </div>
+      
+    <div class="btn-group btn-group-sm" >
+      <button type="button" class="btn btn-default "><%= link_to "Upload Video",new_video_path()  %>
+      </button>
+    </div>
+
   <%end%>
-  <div class="btn-group btn-group-sm" >
-    <button type="button" class="btn btn-default "><%= link_to "My Video",videos_path()  %>
-    </button>
-  </div>
-    
-  <div class="btn-group btn-group-sm" >
-    <button type="button" class="btn btn-default "><%= link_to "Upload Video",new_video_path()  %>
-    </button>
-  </div>
-
-<%end%>
 

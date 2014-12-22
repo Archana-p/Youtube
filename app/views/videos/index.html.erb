@@ -1,6 +1,6 @@
 <div class ="container">
 
-     <div class="btn-group btn-group-sm" >
+    <div class="btn-group btn-group-sm" >
         <button type="button" class="btn btn-default"><%= link_to "Upload Video",new_video_path()  %>
         </button>
     </div>
@@ -46,29 +46,6 @@
                 </tr>
             </tbody>
         <% end %>
-       <!--  <% @fetch_videos.each  do |fetch_video| %>
-
-            <tbody>
-                <tr>
-                    <td>
-                        <%= fetch_video.title%>
-                    </td>
-                    <td> <%= fetch_video.description%></td>
-                    <td>
-                        
-                        <%= link_to  fetch_video.video , video_path(fetch_video)%>
-                    </td>
-                    <td> <%= fetch_video.video_type%></td>
-                    <td><%= fetch_video.fetch_like_count%></td>
-                    <td>
-                        <%= link_to "<span class='glyphicon glyphicon-remove btn btn-danger btn-xs'></span>".html_safe , video_path(fetch_video),:method => "delete"%> 
-
-                    </td>
-
-                   
-                </tr>
-            </tbody>
-        <% end %> -->
     </table>
   <div class="btn-group btn-group-sm" >
         <button type="button" class="btn btn-default"><%= link_to "Back" ,root_path %>
